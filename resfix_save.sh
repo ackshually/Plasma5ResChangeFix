@@ -17,15 +17,15 @@ xs="xs=${xs:1}"
 ys="ys=${ys:1}"
 
 cd ~/.config
-echo $heights > resConfig
-echo $widths >> resConfig
-echo $winids >> resConfig
-echo $xs >> resConfig
-echo $ys >> resConfig
+echo $heights > resFixData
+echo $widths >> resFixData
+echo $winids >> resFixData
+echo $xs >> resFixData
+echo $ys >> resFixData
 
 qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:
 var desk = desktops()[0];
 var key = "positions";
-var cf = ConfigFile("resConfig");
+var cf = ConfigFile("resFixData");
 desk.currentConfigGroup = "General"
 cf.writeEntry(key, desk.readConfig(key));' 
