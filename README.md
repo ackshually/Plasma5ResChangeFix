@@ -8,7 +8,7 @@ Copy both scripts to your home directory. If your native resolution is other tha
 
 
 # Usage:
-Run [resfix_save.sh](resfix_save.sh) before full screen game and [resfix_load.sh](resfix_load.sh) after. Or write a small script like this:
+Run [resfix_save.sh](resfix_save.sh) before your game and [resfix_load.sh](resfix_load.sh) after. Or write a small script like this:
 ```
 #!/bin/bash
 
