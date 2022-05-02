@@ -1,5 +1,5 @@
 # Plasma5ResChangeFix
-In KDE/Plasma 5 there is a bug where after quitting full screen low resolution game it does not automatically restore native resolution and after you restore it manually (or through scripting), desktop icon placement as well as locations and sizes of all open windows are changed.
+In KDE/Plasma 5 there is a bug where after quitting full screen low resolution game it does not automatically restore native resolution and desktop icon placement as well as locations and sizes of all open windows are changed.
 
 These scripts aim to fix this problem by saving and restoring your desktop look.
 
