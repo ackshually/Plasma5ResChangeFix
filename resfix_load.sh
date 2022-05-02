@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Making copy of 
 cp ~/.config/resFixData ~/.config/resFixData.tmp
 
+# Changing resolution to native
 xrandr -s 1920x1080
 sleep 2
 
+# Restoring icon positions using "plasma desktop scripting"
 qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:
 var desk = desktops()[0];
 var cf = ConfigFile("resFixData.tmp");
