@@ -9,13 +9,11 @@ Copy both scripts to your home directory. If your native resolution is other tha
 
 # Usage:
 Run [resfix_save.sh](resfix_save.sh) before full screen application and [resfix_load.sh](resfix_load.sh) after. Or write a small script like this:
-...
-{
-  #!/bin/bash
+```
+#!/bin/bash
 
-  sh ~/resfix_save.sh
-  [your application here] #(e.g. wine Game.exe)
-  sh ~/resfix_load.sh
-}
-...
+sh ~/resfix_save.sh
+[your application here] #(e.g. wine Game.exe)
+sh ~/resfix_load.sh
+```
 and put it in your application directory.
