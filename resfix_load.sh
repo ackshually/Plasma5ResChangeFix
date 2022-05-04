@@ -1,22 +1,7 @@
 #!/bin/bash
 
-cp ~/.config/resFixData ~/.config/resFixData.tmp
-
-# Changing resolution to native
-xrandr -s 1920x1080
-sleep 2
-
-# Restoring icon positions using "plasma desktop scripting"
-qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:
-var desk = desktops()[0];
-var cf = ConfigFile("resFixData.tmp");
-var oldConf = cf.readEntry("positions");
-desk.currentConfigGroup = "General";
-desk.writeConfig("positions", oldConf.split(","));
-cf.deleteEntry("positions");'
-
 # Loading window data and splitting it to arrays
-. ~/.config/resFixData.tmp
+. ~/.config/resFixWindows
 oldIFS=$IFS
 IFS=','
 heights=($heights)
@@ -26,6 +11,10 @@ xs=($xs)
 ys=($ys)
 IFS=$oldIFS
 
+# Changing resolution to native
+xrandr -s $screenres
+sleep 2
+
 # Moving and resizing windows
 for (( n=0; n<${#winids[@]}; n++ ))
 do
@@ -33,4 +22,10 @@ do
 	xdotool windowsize ${winids[n]} ${widths[n]} ${heights[n]}
 done
 
-rm ~/.config/resFixData.tmp
+# Restoring icon positions using "plasma desktop scripting"
+qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'string:
+var desk = desktops()[0];
+var cf = ConfigFile("resFixIcons");
+var oldConf = cf.readEntry("positions");
+desk.currentConfigGroup = "General";
+desk.writeConfig("positions", oldConf.split(","));'
