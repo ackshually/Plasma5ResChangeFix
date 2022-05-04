@@ -4,8 +4,7 @@ In KDE/Plasma 5 there is a bug where after quitting full screen low resolution g
 These scripts aim to fix this problem by saving and restoring your desktop look.
 
 # Installation:
-Copy both scripts to your home directory. If your native resolution is other than 1920x1080, change `xrandr -s 1920x1080` line in [resfix_load.sh](resfix_load.sh) script accordingly. Make sure you have xdotools package installed as the scripts use it for window manipulation.
-
+Copy both scripts to your home directory. Make sure you have xdotools and xrandr packages installed as the scripts use them for window manipulation and resolution changing respectively.
 
 # Usage:
 Run [resfix_save.sh](resfix_save.sh) before your game and [resfix_load.sh](resfix_load.sh) after. Or write a small script like this:
