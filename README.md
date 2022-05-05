@@ -17,4 +17,4 @@ sh ~/resfix_load.sh
 ```
 put it in your game directory and run your game using it.
 
-[Resfix_save.sh](resfix_save.sh) creates 2 files called resFixIcons and resFixWindows in your home/.config folder containing data that [resfix_load.sh](resfix_load.sh) uses to restore you desktop.
+[Resfix_save.sh](resfix_save.sh) creates 2 files called resFixIcons and resFixWindows in your home/.config folder containing data that [resfix_load.sh](resfix_load.sh) uses to restore your desktop.
