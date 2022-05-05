@@ -1,7 +1,26 @@
 #!/bin/bash
 
 # Saving screen resolution
-screenRes="screenres=$(xrandr | grep '*' | awk '{print $1}')"
+
+oldIFS=$IFS
+IFS=$'\n'
+resFreqMulti=($(xrandr --current | sed -n 's/.* \([0-9]\+x[0-9]\+\) .* \([0-9]\+.[0-9]\+\)\*.*/\1 \2/p'))
+outputsMulti=($(xrandr --current | grep " connected " | awk '{print $1}'))
+
+IFS=$' '
+for ot in "${outputsMulti[@]}"; do
+	outputs=$outputs","$ot
+done
+outputs="outputs=${outputs:1}"
+
+for rf in "${resFreqMulti[@]}"; do
+	rf=($rf)
+	resolutions=$resolutions",${rf[0]}"
+	frequencies=$frequencies",${rf[1]}"
+done
+IFS=$oldIFS
+resolutions="resolutions=${resolutions:1}"
+frequencies="frequencies=${frequencies:1}"
 
 # Saving windows position and size as comma separated values
 wins=$(xdotool search --name ".+")
@@ -23,7 +42,9 @@ heights="heights=${heights:1}"
 
 # Saving screen resolution and windows data to a file
 cd ~/.config
-echo $screenRes > resFixWindows
+echo $outputs > resFixWindows
+echo $resolutions >> resFixWindows
+echo $frequencies >> resFixWindows
 echo $winids >> resFixWindows
 echo $xs >> resFixWindows
 echo $ys >> resFixWindows

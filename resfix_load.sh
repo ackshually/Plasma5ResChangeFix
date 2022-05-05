@@ -4,6 +4,9 @@
 . ~/.config/resFixWindows
 oldIFS=$IFS
 IFS=','
+outputs=($outputs)
+resolutions=($resolutions)
+frequencies=($frequencies)
 heights=($heights)
 widths=($widths)
 winids=($winids)
@@ -12,14 +15,16 @@ ys=($ys)
 IFS=$oldIFS
 
 # Changing resolution to native
-xrandr -s $screenres
-sleep 2
+len="${#outputs[@]}"
+for (( i=0; i<$len; i++ )); do
+	xrandr --output "${outputs[$i]}" --mode "${resolutions[$i]}" --rate "${frequencies[$i]}"
+done
 
 # Moving and resizing windows
-for (( n=0; n<${#winids[@]}; n++ ))
-do
-	xdotool windowmove ${winids[n]} ${xs[n]} ${ys[n]}
-	xdotool windowsize ${winids[n]} ${widths[n]} ${heights[n]}
+len="${#winids[@]}"
+for (( i=0; i<$len; i++ )); do
+	xdotool windowmove ${winids[i]} ${xs[i]} ${ys[i]}
+	xdotool windowsize ${winids[i]} ${widths[i]} ${heights[i]}
 done
 
 # Restoring icon positions using "plasma desktop scripting"
