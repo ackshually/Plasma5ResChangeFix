@@ -12,7 +12,8 @@ Run [resfix_save.sh](resfix_save.sh) before your game and [resfix_load.sh](resfi
 #!/bin/bash
 
 sh ~/resfix_save.sh
-[your application here] #(e.g. wine Game.exe)
+[your application here] #(e.g. wine game.exe)
 sh ~/resfix_load.sh
 ```
 put it in your game directory and run your game using it.
+[Resfix_save.sh](resfix_save.sh) creates 2 files called resFixIcons and resFixWindows in your home/.config folder containing data that [resfix_load.sh](resfix_load.sh) uses to restore you desktop.
